@@ -27,18 +27,28 @@ typedef struct {
     char player_orientation;
 } t_config;
 
+typedef struct	s_mlximg {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_mlximg;
 
 typedef struct  s_slice
 {
     int     height;
     char    *texture;
     int     x;
+    int     start;
+    int     end;
 }               t_slice;
 
 typedef struct  s_scene
 {
-    t_slice *slices;
-    int     num_slices;
+    t_slice **column;
+	t_mlximg	mlx_img;
+    int     nb_columns;
 }               t_scene;
 
 typedef struct s_map
@@ -54,6 +64,7 @@ char		**get_file(char *filename);
 char        **get_map(char **map);
 int			main(int ac, char **av);
 bool        is_valid_map(t_map *data);
+
 // Définition des constantes
 // #define WINDOW_WIDTH 800
 // #define WINDOW_HEIGHT 600
