@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:43 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 15:41:44 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/17 16:41:21 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ static int is_valid_char(char **map)
 	return (1);
 }
 
-
-// check isspace et proteger les cases vides
+// Check if the card is locked
 static int is_close(char **map)
 {
 	unsigned int i;
@@ -111,11 +110,37 @@ static int is_close(char **map)
 	return (1);
 }
 
+static int	check_player(char **map)
+{
+	int i;
+	int j;
+	int player;
+
+	i = 0;
+	player = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+				player++;
+			j++;
+		}
+		i++;
+	}
+	if (player != 1)
+		return (0);
+	return (1);
+}
+
 bool is_valid_map(t_map *data)
 {
 	if (!is_valid_char(data->map))
 		return (false);
 	if (!is_close(data->map))
+		return (false);
+	if (!check_player(data->map))
 		return (false);
 	return (true);
 }
