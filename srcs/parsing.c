@@ -1,7 +1,7 @@
 #include "cube3d.h"
 
 
-// separer la map du file 
+// separer la map du file
 char **get_map(char *map_path)
 {
 	int fd;

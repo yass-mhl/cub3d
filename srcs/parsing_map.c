@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:43 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 14:01:01 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/17 15:41:44 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int is_valid_char(char **map)
 }
 
 
-// check isspace et proteger les cases vides 
+// check isspace et proteger les cases vides
 static int is_close(char **map)
 {
 	unsigned int i;
@@ -101,9 +101,7 @@ static int is_close(char **map)
 					return (0);
 				if (j == 0 || j == ft_strlen(map[i]) - 1)
 					return (0);
-				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
-					return (0);
-				if (map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
+				if (check_cross(map, i, j) == 0)
 					return (0);
 			}
 			j++;

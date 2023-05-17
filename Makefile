@@ -6,7 +6,7 @@
 #    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/17 14:01:57 by ymehlil          ###   ########.fr        #
+#    Updated: 2023/05/17 15:30:40 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = cub3D
 SRCS = main.c \
       parsing_args.c \
 	  parsing_map.c \
+	  utils_parsing.c \
       raycasting.c \
       utils.c \
       player_movement.c \
