@@ -1,6 +1,6 @@
 # ifndef CUB3D_H
 # define CUB3D_H
-# define MAX_SLICES 1024
+
 
 // Inclusion des bibliothèques standard nécessaires
 # include "../ft_printf/ft_printf.h"
@@ -15,6 +15,10 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
+ // Définition des constantes
+ # define WINDOW_WIDTH 1920
+ # define WINDOW_HEIGHT 1080
+ # define MAX_SLICES 1024
 
 // Définition des structures de données
 typedef struct {
@@ -38,7 +42,7 @@ typedef struct	s_mlximg {
 typedef struct  s_slice
 {
     int     height;
-    char    *texture;
+    int    	color;
     int     x;
     int     start;
     int     end;
@@ -62,12 +66,9 @@ typedef struct s_map
 void        render(t_scene *scene);
 char		**get_file(char *filename);
 char        **get_map(char **map);
-int			main(int ac, char **av);
 bool        is_valid_map(t_map *data);
 
-// Définition des constantes
-// #define WINDOW_WIDTH 800
-// #define WINDOW_HEIGHT 600
+
 
 // // Définition des structures de données
 // typedef struct s_player
