@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:23:39 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 17:50:34 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/17 19:44:00 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,28 @@ int	check_cross(char **map, int i, int j)
 		|| !is_valid(map[i - 1][j]))
 		return (0);
 	return (1);
+}
+
+int	count_lines(const char *filename)
+{
+	char	c;
+	int		fd;
+	int		line_count;
+	int		bytes_read;
+
+	line_count = 0;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	bytes_read = read(fd, &c, 1);
+	while (bytes_read > 0)
+	{
+		if (c == '\n')
+		{
+			line_count++;
+		}
+		bytes_read = read(fd, &c, 1);
+	}
+	close(fd);
+	return (line_count);
 }

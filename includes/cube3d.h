@@ -34,8 +34,18 @@ typedef struct
 	int		player_pos_x;
 	int		player_pos_y;
 	char	player_orientation;
-    t_map   *map;
+	t_map	*map;
 }			t_config;
+
+typedef struct s_check
+{
+	int		no;
+	int		so;
+	int		we;
+	int		ea;
+	int 	f;
+	int		c;
+}			t_check;
 
 typedef struct s_slice
 {
@@ -59,6 +69,11 @@ int			main(int ac, char **av);
 bool		is_valid_map(t_map *data);
 int			is_space(char c);
 int			check_cross(char **map, int i, int j);
+int			count_lines(const char *filename);
+bool 		check_args(t_map *data);
+
+// Déclaration des fonctions de free
+void		ft_free_all_tab(char **tab, int index);
 // Définition des constantes
 // #define WINDOW_WIDTH 800
 // #define WINDOW_HEIGHT 600

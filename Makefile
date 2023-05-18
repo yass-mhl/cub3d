@@ -6,7 +6,7 @@
 #    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/17 15:30:40 by ymehlil          ###   ########.fr        #
+#    Updated: 2023/05/17 19:49:30 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = main.c \
       player_movement.c \
       rendering.c \
       exit.c \
+	  free.c \
 	  check.c
 
 SRCSD	= srcs/

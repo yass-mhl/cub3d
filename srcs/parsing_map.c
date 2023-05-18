@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:43 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 16:41:21 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/17 19:59:43 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,41 @@
 
 char	**get_map(char **file)
 {
-	int	i;
-	int j;
-	char **map;
+	char	**map;
+	int		i;
+	int		j;
+	int		start_line;
 	
 	i = 0;
-	j = 0;
+	start_line = 0;
 	while (file[i])
 	{
-		if (ft_strncmp(file[i], "NO", 2) || ft_strncmp(file[i], "SO", 2)
-			|| ft_strncmp(file[i], "WE", 2) 
-			|| ft_strncmp(file[i], "EA", 2) 
-			|| ft_strncmp(file[i], "F", 1), ft_strncmp(file[i], "C", 1))
-				i++;
-		else
-		{
-			j++;
-			i++;
-		}
+		if (!ft_strncmp(file[i], "NO", 2) || !ft_strncmp(file[i], "SO", 2)
+			|| !ft_strncmp(file[i], "WE", 2) || !ft_strncmp(file[i], "EA", 2) 
+			||  !ft_strncmp(file[i], "F ", 2) || !ft_strncmp(file[i], "C ", 2) || file[i][0] == '\n')
+				start_line++;		
+		i++;
 	}
-	map = malloc(sizeof(char *) * (j + 1));
+	map = malloc(sizeof(char *) * (i - start_line + 1));
 	if (!map)
-		return (ft_putstr_fd("Error : malloc fail\n", 2), NULL);
-	i = 0;
+		return (NULL);
 	j = 0;
-	while (file[i])
+	while (file[start_line] && start_line <= i)
 	{
-		
-		if (!ft_strncmp(file[i], "NO", 2) || !ft_strncmp(file[i], "SO", 2) 
-			|| !ft_strncmp(file[i], "WE", 2) 
-			|| !ft_strncmp(file[i], "EA", 2) 
-			|| !ft_strncmp(file[i], "F", 1) || !ft_strncmp(file[i], "C", 1))
-			{
-				printf("tessajdbusajhbast i = %d\n", i);
-				i++;
-			}
-		else
-		{   
-			printf("test i = %d\n", i);
-			map[j] = ft_strdup(file[i]);
-			j++;
-			i++;
-		}
+		map[j] = ft_strdup(file[start_line]);
+		start_line++;
+		j++;
 	}
+	map[j] = 0;
 	return (map);
 }
 
 // Check si la map est compose que de 0, 1, 2, N, S, E, W, ' '.
 
-static int is_valid_char(char **map)
+static int	is_valid_char(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -73,7 +56,7 @@ static int is_valid_char(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (!ft_strchr(" 01NSEW", map[i][j]))
+			if (!ft_strchr(" 01NSEW\n", map[i][j]))
 				return (0);
 			j++;
 		}
@@ -83,10 +66,10 @@ static int is_valid_char(char **map)
 }
 
 // Check if the card is locked
-static int is_close(char **map)
+static int	is_close(char **map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	while (map[i])
@@ -112,9 +95,9 @@ static int is_close(char **map)
 
 static int	check_player(char **map)
 {
-	int i;
-	int j;
-	int player;
+	int	i;
+	int	j;
+	int	player;
 
 	i = 0;
 	player = 0;
@@ -134,7 +117,7 @@ static int	check_player(char **map)
 	return (1);
 }
 
-bool is_valid_map(t_map *data)
+bool	is_valid_map(t_map *data)
 {
 	if (!is_valid_char(data->map))
 		return (false);
