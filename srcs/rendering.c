@@ -1,4 +1,4 @@
-# include "cube3d.h"
+#include "cube3d.h"
 
 void	my_mlx_pixel_put(t_mlximg *mlximg, int x, int y, int color)
 {
