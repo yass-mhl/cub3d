@@ -6,20 +6,24 @@
 #    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/17 14:01:57 by ymehlil          ###   ########.fr        #
+#    Updated: 2023/05/18 15:52:39 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRCS = main.c \
+	  parsing.c \
       parsing_args.c \
 	  parsing_map.c \
+	  utils_parsing.c \
+	  fill_data.c \
       raycasting.c \
       utils.c \
       player_movement.c \
       rendering.c \
       exit.c \
+	  free.c \
 	  check.c
 
 SRCSD	= srcs/
