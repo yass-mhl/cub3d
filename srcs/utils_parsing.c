@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:23:39 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 19:44:00 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/18 15:37:25 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ int	count_lines(const char *filename)
 	}
 	close(fd);
 	return (line_count);
+}
+
+void ft_fill_check(t_check *check)
+{
+	check->no = 0;
+	check->so = 0;
+	check->we = 0;
+	check->ea = 0;
+	check->f = 0;
+	check->c = 0;
 }

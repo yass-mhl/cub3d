@@ -31,9 +31,11 @@ typedef struct
 	char	*so;
 	char	*we;
 	char	*ea;
+	char	*f;
+	char	*c;
 	int		player_pos_x;
 	int		player_pos_y;
-	char	player_orientation;
+	int		player_orientation;
 	t_map	*map;
 }			t_config;
 
@@ -43,7 +45,7 @@ typedef struct s_check
 	int		so;
 	int		we;
 	int		ea;
-	int 	f;
+	int		f;
 	int		c;
 }			t_check;
 
@@ -70,7 +72,12 @@ bool		is_valid_map(t_map *data);
 int			is_space(char c);
 int			check_cross(char **map, int i, int j);
 int			count_lines(const char *filename);
-bool 		check_args(t_map *data);
+bool		check_args(t_map *data);
+void		ft_fill_check(t_check *check);
+t_config	*set_config(t_map *data);
+char		*get_identifier(char **file, char *identifier);
+int			get_pos(char **map, char pos);
+void		replace_spaces_with_one(char **map);
 
 // Déclaration des fonctions de free
 void		ft_free_all_tab(char **tab, int index);

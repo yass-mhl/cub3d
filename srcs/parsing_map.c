@@ -6,42 +6,11 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:43 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/17 19:59:43 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/18 15:34:52 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-char	**get_map(char **file)
-{
-	char	**map;
-	int		i;
-	int		j;
-	int		start_line;
-	
-	i = 0;
-	start_line = 0;
-	while (file[i])
-	{
-		if (!ft_strncmp(file[i], "NO", 2) || !ft_strncmp(file[i], "SO", 2)
-			|| !ft_strncmp(file[i], "WE", 2) || !ft_strncmp(file[i], "EA", 2) 
-			||  !ft_strncmp(file[i], "F ", 2) || !ft_strncmp(file[i], "C ", 2) || file[i][0] == '\n')
-				start_line++;		
-		i++;
-	}
-	map = malloc(sizeof(char *) * (i - start_line + 1));
-	if (!map)
-		return (NULL);
-	j = 0;
-	while (file[start_line] && start_line <= i)
-	{
-		map[j] = ft_strdup(file[start_line]);
-		start_line++;
-		j++;
-	}
-	map[j] = 0;
-	return (map);
-}
 
 // Check si la map est compose que de 0, 1, 2, N, S, E, W, ' '.
 

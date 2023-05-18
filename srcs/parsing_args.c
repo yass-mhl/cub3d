@@ -6,46 +6,11 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:09 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/18 15:30:22 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/18 15:39:34 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-char **get_file(char *filename)
-{
-	int		fd;
-	int		i;
-	int		nb_line;
-	char	**all_lines;
-
-	i = -1;
-	nb_line = count_lines(filename);
-	all_lines = malloc(sizeof(char *) * (nb_line + 1));
-	if (!all_lines)
-		return (NULL);
-	fd = open(filename, O_RDONLY);
-	if (fd <= 0)
-		return (ft_free_all_tab(all_lines, nb_line), NULL);
-	while (++i < nb_line)
-	{
-		all_lines[i] = get_next_line(fd);
-		if (!all_lines[i])
-			return (ft_free_all_tab(all_lines, i), NULL);
-	}
-	all_lines[i] = 0;
-	return (close(fd), all_lines);
-}
-
-static	void ft_fill_check(t_check *check)
-{
-	check->no = 0;
-	check->so = 0;
-	check->we = 0;
-	check->ea = 0;
-	check->f = 0;
-	check->c = 0;
-}
 
 static	int check_nb_infos(char **file)
 {
