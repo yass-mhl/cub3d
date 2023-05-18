@@ -1,6 +1,6 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-# define MAX_SLICES 1024
+
 
 // Inclusion des bibliothèques standard nécessaires
 # include "../ft_printf/ft_printf.h"
@@ -49,18 +49,32 @@ typedef struct s_check
 	int		c;
 }			t_check;
 
-typedef struct s_slice
+typedef struct  s_slice
 {
-	int		height;
-	char	*texture;
-	int		x;
-}			t_slice;
+    int     height;
+    int		color;
+    int     x;
+    int     start;
+    int     end;
+}               t_slice;
 
-typedef struct s_scene
+typedef struct	s_mlximg {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_mlximg;
+
+typedef struct  s_scene
 {
-	t_slice	*slices;
-	int		num_slices;
-}			t_scene;
+    t_slice **column;
+	t_mlximg	mlx_img;
+    int     nb_columns;
+}               t_scene;
+
+
+
 
 void		render(t_scene *scene);
 
@@ -82,8 +96,8 @@ void		replace_spaces_with_one(char **map);
 // Déclaration des fonctions de free
 void		ft_free_all_tab(char **tab, int index);
 // Définition des constantes
-// #define WINDOW_WIDTH 800
-// #define WINDOW_HEIGHT 600
+ #define WINDOW_WIDTH 1920
+ #define WINDOW_HEIGHT 1080
 
 // // Définition des structures de données
 // typedef struct s_player
