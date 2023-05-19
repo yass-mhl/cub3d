@@ -6,7 +6,7 @@
 #    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/18 15:52:39 by ymehlil          ###   ########.fr        #
+#    Updated: 2023/05/19 13:45:18 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = main.c \
       parsing_args.c \
 	  parsing_map.c \
 	  utils_parsing.c \
+	  utils_parsing_info.c \
 	  fill_data.c \
       raycasting.c \
       utils.c \
