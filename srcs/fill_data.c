@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:46:17 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/18 17:53:07 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:02:38 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ char *get_identifier(char **file, char *identifier)
 	while (file[i] && ft_strncmp(file[i], identifier, ft_strlen(identifier)))
 		i++;
 	res = ft_strtokstr(file[i], identifier);
+	res = ft_strtrim(res, " ");
+	res = ft_strtrim(res, "\n");
 	return (res);
 }
 
@@ -72,4 +74,24 @@ int get_pos(char **map, char pos)
 		i++;
 	}
 	return (-1);
+}
+
+t_config	*set_config(t_map *data)
+{
+	t_config	*config;
+	config = malloc(sizeof(t_config));
+	if (!config)
+		return (NULL);
+	// config->map = data->map;
+	config->no = get_identifier(data->file, "NO");
+	config->so = get_identifier(data->file, "SO");
+	config->we = get_identifier(data->file, "WE");
+	config->ea = get_identifier(data->file, "EA");
+	config->f = get_identifier(data->file, "F ");
+	config->c = get_identifier(data->file, "C ");
+	config->player_pos_x = get_pos(data->map, 'x');
+	config->player_pos_y = get_pos(data->map, 'y');
+	config->player_orientation = 0;
+	return (config);
+	
 }

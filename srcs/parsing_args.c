@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:09 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/18 15:39:34 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:49:52 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,30 @@ static int check_valid_id(char **file)
 	return (1);
 }
 
+int is_directory_is_valid(char *file)
+{
+	int fd;
+	
+	if ((fd = open(file, O_DIRECTORY)) != -1)
+		return (close(fd), 0);
+	if ((fd = open(file, O_RDONLY)) == -1)
+		return (close(fd), 0);
+	return (1);
+}
+
+int	check_cub_extension(char *file)
+{
+	int i;
+
+	i = 0;
+	while (file[i])
+		i++;
+	if (i < 3)
+		return (0);
+	if (file[i - 1] == 'b' && file[i - 2] == 'u' && file[i - 3] == 'c' && file[i - 4] == '.')
+		return (1);
+	return (0);
+}
 
 bool check_args(t_map *data)
 {
