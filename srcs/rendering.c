@@ -30,7 +30,6 @@ void draw_scene(t_scene *scene)
 {
 	if (!scene)
 		return ;
-
 	int y;
 	
 	y = 0;
@@ -47,15 +46,23 @@ void render(t_scene *scene)
     // code pour préparer le rendu ici...
 	void	*mlx;
 	void	*mlx_win;
-
+	
 	mlx = mlx_init();
+	if(!mlx)
+		printf("Error mlx_init\n");
 	mlx_win = mlx_new_window(mlx, WINDOW_HEIGHT, WINDOW_WIDTH, "Cub3D");
+	if(!mlx_win)
+		printf("Error mlx_new_window\n");
+	printf("heeey\n");
 	scene->mlx_img.img = mlx_new_image(mlx, 1920, 1080);
+	if(!scene->mlx_img.img)
+		printf("Error mlx_new_image\n");
 	scene->mlx_img.addr = mlx_get_data_addr(scene->mlx_img.img, &scene->mlx_img.bits_per_pixel, &scene->mlx_img.line_length,
-								&scene->mlx_img.endian);
+								&scene->mlx_img.endian);	
 	draw_scene(scene);
 	mlx_put_image_to_window(mlx, mlx_win, scene->mlx_img.img, 0, 0);
 	mlx_loop(mlx);
 
     // code pour finaliser le rendu ici...
 }
+

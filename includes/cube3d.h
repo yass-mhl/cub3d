@@ -70,6 +70,7 @@ typedef struct s_scene
 {
 	t_slice		**column;
 	t_mlximg	mlx_img;
+	t_config	*config;
 	int			nb_columns;
 }				t_scene;
 

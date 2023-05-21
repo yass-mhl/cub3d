@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:09 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/19 14:49:52 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/21 17:37:56 by gregoire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static	int check_nb_infos(char **file)
 {
 	int	i;
-	int	count;
+	// int	count;
 	t_check	check;
 
 	i = 0;
-	count = 0;
+	// count = 0;
 	ft_fill_check(&check);
 	while(file[i])
 	{
