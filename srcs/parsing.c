@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:34:06 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/19 15:11:56 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/26 05:04:01 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	**get_map(char **file)
 	int		i;
 	int		j;
 	int		start_line;
+	char 	*tmp;
 
 	i = 0;
 	start_line = 0;
@@ -61,10 +62,11 @@ char	**get_map(char **file)
 	j = 0;
 	while (file[start_line] && start_line <= i)
 	{
-		map[j] = ft_strdup(file[start_line]);
-		map[j] = ft_strtrim(map[j], "\n");
+		tmp = ft_strdup(file[start_line]);
+		map[j] = ft_strtrim(tmp, "\n");
 		start_line++;
 		j++;
+		free(tmp);
 	}
 	map[j] = 0;
 	return (map);
