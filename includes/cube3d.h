@@ -14,6 +14,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+// Definition des macros
+
+# define ERROR_ARGS "Error\n: wrong number of arguments"
+# define ERROR_EXT "Error\n: extension"
+# define ERROR_DIR "Error\n: invalid file/directory"
+# define ERROR_MAP "Error\n: invalid map"
+
 // Définition des structures de données
 
 typedef struct s_map
@@ -98,6 +105,8 @@ int				check_cub_extension(char *file);
 
 // Déclaration des fonctions de free
 void			ft_free_all_tab(char **tab, int index);
+void			free_config(t_config *config);
+void			free_data(t_map *data);
 // Définition des constantes
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080

@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:46:17 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/19 14:02:38 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/26 05:02:58 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ char *get_identifier(char **file, char *identifier)
 {
 	int		i;
 	char	*res;
+	char 	*tmp;
+	char	*tmp2;
 	
 	i = 0;
 	while (file[i] && ft_strncmp(file[i], identifier, ft_strlen(identifier)))
 		i++;
-	res = ft_strtokstr(file[i], identifier);
-	res = ft_strtrim(res, " ");
-	res = ft_strtrim(res, "\n");
-	return (res);
+	tmp = ft_strtokstr(file[i], identifier);
+	tmp2 = ft_strtrim(tmp, " ");
+	res = ft_strtrim(tmp2, "\n");
+	return (free(tmp), free(tmp2), res);
 }
 
 int get_pos(char **map, char pos)
