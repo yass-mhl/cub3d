@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:23:39 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/18 15:37:25 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/21 18:48:59 by gregoire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,37 @@ int is_valid(char c)
 }
 
 int	check_cross(char **map, int i, int j)
-{	
-	if (i == 0 || j == 0 || !map[i + 1] || !map[i][j + 1] || !map[i - 1][j] || !map[i + 1][j])
-		return (0);
+{
+	printf("i = %d, j = %d\n, map[i][j] = %c\n", i, j, map[i][j]);	
+	// if (i == 0 || j == 0 || !map[i + 1] || !map[i][j + 1] || !map[i - 1][j] || !map[i + 1][j])
+	// 	return (printf("7\n"), 0);
+	if (i == 0) {
+    printf("Erreur : i ne peut pas être 0.\n");
+    return 0;
+	}
+	if (j == 0) {
+		printf("Erreur : j ne peut pas être 0.\n");
+		return 0;
+	}
+	if (!map[i + 1]) {
+		printf("Erreur : map[i + 1] n'existe pas.\n");
+		return 0;
+	}
+	if (!map[i][j + 1]) {
+		printf("Erreur : map[i][j + 1] n'existe pas.\n");
+		return 0;
+	}
+	if (!map[i - 1][j]) {
+		printf("Erreur : map[i - 1][j] n'existe pas.\n");
+		return 0;
+	}
+	if (!map[i + 1][j]) {
+		printf("Erreur : map[i + 1][j] n'existe pas.\n");
+		return 0;
+	}
 	if (!is_valid(map[i][j + 1]) || !is_valid(map[i][j - 1]) || !is_valid(map[i + 1][j])
 		|| !is_valid(map[i - 1][j]))
-		return (0);
+		return (printf("8\n"), 0);
 	return (1);
 }
 

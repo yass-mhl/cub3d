@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
 #    Updated: 2023/05/26 05:02:11 by ymehlil          ###   ########.fr        #
@@ -17,7 +17,6 @@ SRCS = main.c \
       parsing_args.c \
 	  parsing_map.c \
 	  utils_parsing.c \
-	  utils_parsing_info.c \
 	  fill_data.c \
       raycasting.c \
       utils.c \
@@ -25,7 +24,8 @@ SRCS = main.c \
       rendering.c \
       exit.c \
 	  free.c \
-	  check.c
+	  check.c \
+	  utils_parsing_info.c
 
 SRCSD	= srcs/
 
@@ -86,7 +86,7 @@ $(OBJSD)%.o: $(GNL_PATH)%.c
 
 clean:
 	@rm -rf $(OBJSD) > /dev/null
-	@make -C libft clean > /dev/null
+	@make -C libft fclean > /dev/null
 	@make -C ft_printf clean > /dev/null
 	@make -C minilibx-linux clean > /dev/null
 	@echo "$(MAGENTA)Suppression des fichiers objets terminée.$(RESET)"

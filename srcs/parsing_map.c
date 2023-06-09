@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:00:43 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/18 15:34:52 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/21 18:22:40 by gregoire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static int	is_close(char **map)
 			if (ft_strchr("0NSEW", map[i][j]))
 			{
 				if (i == 0 || i == ft_strlen(map[i]) - 1)
-					return (0);
+					return (printf("4\n"), 0);
 				if (j == 0 || j == ft_strlen(map[i]) - 1)
-					return (0);
+					return (printf("5\n"), 0);
 				if (check_cross(map, i, j) == 0)
-					return (0);
+					return (printf("6\n"), 0);
 			}
 			j++;
 		}
@@ -89,10 +89,10 @@ static int	check_player(char **map)
 bool	is_valid_map(t_map *data)
 {
 	if (!is_valid_char(data->map))
-		return (false);
+		return (printf("1\n"), false);
 	if (!is_close(data->map))
-		return (false);
+		return (printf("2\n"), false);
 	if (!check_player(data->map))
-		return (false);
+		return (printf("3\n"), false);
 	return (true);
 }

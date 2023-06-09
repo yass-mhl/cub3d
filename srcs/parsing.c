@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:34:06 by ymehlil           #+#    #+#             */
 /*   Updated: 2023/05/26 05:04:01 by ymehlil          ###   ########.fr       */
@@ -68,7 +68,7 @@ char	**get_map(char **file)
 		j++;
 		free(tmp);
 	}
-	map[j] = 0;
+	map[j] = NULL;
 	return (map);
 }
 
