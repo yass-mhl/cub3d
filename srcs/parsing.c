@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:34:06 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/19 15:11:56 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/22 10:40:25 by gregoire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**get_map(char **file)
 		start_line++;
 		j++;
 	}
-	map[j] = 0;
+	map[j] = NULL;
 	return (map);
 }
 

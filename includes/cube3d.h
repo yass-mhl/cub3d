@@ -13,6 +13,10 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
+# include <stdint.h>
+# include <time.h>
+
 
 // Définition des structures de données
 
@@ -24,7 +28,7 @@ typedef struct s_map
 	char		**map;
 }				t_map;
 
-typedef struct
+typedef struct  s_config
 {
 	char		*no;
 	char		*so;
@@ -66,6 +70,20 @@ typedef struct s_mlximg
 	int			endian;
 }				t_mlximg;
 
+typedef struct s_map_data
+{
+	t_mlximg *mlx_img;
+	void 	*mlx_win;
+	void	*mlx;
+	int		**map;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+}		t_map_data;
+
 typedef struct s_scene
 {
 	t_slice		**column;
@@ -74,12 +92,10 @@ typedef struct s_scene
 	int			nb_columns;
 }				t_scene;
 
-void			render(t_scene *scene);
-
 // Déclaration des fonctions de parsing
 char			**get_file(char *filename);
 char			**get_map(char **map);
-int				main(int ac, char **av);
+// int				main(int ac, char **av);
 bool			is_valid_map(t_map *data);
 int				is_space(char c);
 int				check_cross(char **map, int i, int j);
@@ -96,12 +112,16 @@ bool			check_config(t_config *config);
 int				check_commas(char *str);
 int				is_directory_is_valid(char *file);
 int				check_cub_extension(char *file);
+int				**raycast(int **map, double posX, double posY, double dirX, double dirY, double planeX, double planeY);
+void 			render(int **map, double posX, double posY, double dirX, double dirY, double planeX, double planeY);
 
 // Déclaration des fonctions de free
 void			ft_free_all_tab(char **tab, int index);
 // Définition des constantes
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
+# define texWidth 64
+# define texHeight 64
 
 // // Définition des structures de données
 // typedef struct s_player
