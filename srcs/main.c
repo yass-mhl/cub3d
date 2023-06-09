@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:03:54 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/06/08 15:13:46 by gregoire         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:16:02 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int main(int ac, char **av)
 	// double oldTime = 0; //time of previous frame
 	int **map;
 	map = raycast(worldMap, posX, posY, dirX, dirY, planeX, planeY);
-	render(map, posX, posY, dirX, dirY, planeX, planeY);
+	render(map, posX, posY, dirX, dirY, planeX, planeY, worldMap);
 	(void) ac;
 	(void) av;
 //   	void	*mlx;

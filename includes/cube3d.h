@@ -73,6 +73,7 @@ typedef struct s_mlximg
 typedef struct s_map_data
 {
 	t_mlximg *mlx_img;
+	int		**worldmap;
 	void 	*mlx_win;
 	void	*mlx;
 	int		**map;
@@ -113,7 +114,7 @@ int				check_commas(char *str);
 int				is_directory_is_valid(char *file);
 int				check_cub_extension(char *file);
 int				**raycast(int **map, double posX, double posY, double dirX, double dirY, double planeX, double planeY);
-void 			render(int **map, double posX, double posY, double dirX, double dirY, double planeX, double planeY);
+void 			render(int **map, double posX, double posY, double dirX, double dirY, double planeX, double planeY, int **worldmap);
 
 // Déclaration des fonctions de free
 void			ft_free_all_tab(char **tab, int index);
