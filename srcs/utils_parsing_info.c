@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:44:40 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/19 14:09:40 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/05/26 05:58:19 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int check_f_c(t_config *config)
 	f = ft_split(config->f, ',');
 	c = ft_split(config->c, ',');
 	if (ft_tablen(f) != 3 || ft_tablen(c) != 3)
-		return (false);
+		return (ft_free_all_tab(c, 0), ft_free_all_tab(f, 0), false);
 	while (f[i] != NULL)
 	{	
 		if (!is_less_255(f[i]))
-			return (false);
+			return (ft_free_all_tab(c, 0), ft_free_all_tab(f, 0), false);
 		i++;
 	}
 	i = 0;
 	while (c[i])
 	{
 		if (!is_less_255(c[i]))
-			return (false);
+			return (ft_free_all_tab(f, 0), ft_free_all_tab(c, 0), false);
 		i++;
 	}
 	return (ft_free_all_tab(c, 0), ft_free_all_tab(f, 0), true);

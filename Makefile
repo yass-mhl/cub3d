@@ -6,7 +6,7 @@
 #    By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/21 17:41:01 by gregoire         ###   ########.fr        #
+#    Updated: 2023/05/26 05:02:11 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ clean:
 
 fclean: clean
 	@make -C ft_printf fclean > /dev/null
+	@make -C libft fclean > /dev/null
 	@make -C minilibx-linux clean > /dev/null
 	@rm -rf $(NAME) > /dev/null
 	@echo "$(MAGENTA)Nettoyage complet effectué.$(RESET)"
