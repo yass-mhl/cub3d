@@ -1,14 +1,5 @@
 # include "cube3d.h"
 
-
-int	**cast(t_scene *scene)
-{
-	(void) scene;
-	return(NULL);
-}
-
-
-
 int	**raycast(int **worldMap, double posX, double posY, double dirX, double dirY, double planeX, double planeY)
 {
 	int **buffer;
@@ -19,6 +10,7 @@ int	**raycast(int **worldMap, double posX, double posY, double dirX, double dirY
 	while (y < WINDOW_HEIGHT)
 	{
 		buffer[y] = calloc(WINDOW_WIDTH + 1, sizeof(int));
+    memset(buffer[y], -1, WINDOW_WIDTH * sizeof(int));
 		if (!buffer[y])
         fprintf(stderr, "Failed to allocate memory for buffer[%d]\n", y);
 		y++;
@@ -120,17 +112,30 @@ int	**raycast(int **worldMap, double posX, double posY, double dirX, double dirY
       int lineHeight = (int)(WINDOW_HEIGHT / perpWallDist);
 
 
-      int pitch = 100;
+      int pitch = 0;
 
       //calculate lowest and highest pixel to fill in current stripe
       int drawStart = -lineHeight / 2 + WINDOW_HEIGHT / 2 + pitch;
       if(drawStart < 0) drawStart = 0;
       int drawEnd = lineHeight / 2 + WINDOW_HEIGHT / 2 + pitch;
-      if(drawEnd >= WINDOW_HEIGHT) drawEnd = WINDOW_HEIGHT - 1;
+      if(drawEnd >= WINDOW_HEIGHT) drawEnd = WINDOW_HEIGHT;
 
       //texturing calculations
-      int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
-
+      // int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
+      int texNum;
+      if (side == 0) {  // Est/Ouest
+        if (stepX > 0) {
+          texNum = 0; // Texture for East
+        } else {
+          texNum = 1; // Texture for West
+        }
+      } else {  // Nord/Sud
+        if (stepY > 0) {
+          texNum = 2; // Texture for South
+        } else {
+          texNum = 3; // Texture for North
+        }
+      }
       //calculate value of wallX
       double wallX; //where exactly the wall was hit
       if(side == 0) wallX = posY + perpWallDist * rayDirY;
@@ -150,36 +155,12 @@ int	**raycast(int **worldMap, double posX, double posY, double dirX, double dirY
       for(int y = drawStart; y < drawEnd; y++)
       {
         // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-		// printf("drawStart = %d\n", drawStart);
-		// printf("drawEnd = %d\n", drawEnd);
-		// printf("WINDOW_HEIGHT = %d\n", WINDOW_HEIGHT);
-		// printf("WINDOW_WIDTH = %d\n", WINDOW_WIDTH);
         int texY = (int)texPos & (texHeight - 1);
         texPos += step;
         int color = texture[texNum][texHeight * texY + texX];
-        //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
         if(side == 1) color = (color >> 1) & 8355711;
-		// printf("color = %d\n", color);
-		// printf("y = %d\n", y);
-		// printf("x = %d\n", x);
         buffer[y][x] = color;
-		// printf("x = %d, y = %d, color = %d\n", x, y, color);
       }
     }
-	// int i;
-	// int j = 0;
-
-	// i = 0;
-	// while (buffer[i])
-	// {
-	// 	j = 0;
-	// 	while (buffer[i][j])
-	// 	{
-	// 		printf("%d i : %d", buffer[i][j], i);
-	// 		j++;
-	// 	}
-	// 	printf(".\n");
-	// 	i++;
-	// }
 	return (buffer);
 }

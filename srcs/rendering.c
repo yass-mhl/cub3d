@@ -5,8 +5,9 @@
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_ESCAPE 65307
-#define ROTSPEED 0.1
+#define ROTSPEED 0.05
 #define MOVESPEED 0.1
+
 
 void	my_mlx_pixel_put(t_mlximg *mlximg, int x, int y, int color)
 {
@@ -26,7 +27,15 @@ void	draw_scene(int **map, void *mlx, void *mlx_win, t_mlximg *mlx_img)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(mlx_img, x, y, map[y][x]);
+			if (map[y][x] == -1)
+			{
+				if(y > WINDOW_HEIGHT / 2)
+					my_mlx_pixel_put(mlx_img, x, y, 0xC8FFB4);
+				else 
+					my_mlx_pixel_put(mlx_img, x, y, 0x66CCFF);
+			}
+			else
+				my_mlx_pixel_put(mlx_img, x, y, map[y][x]);
 			x++;
 		}
 		y++;
@@ -52,16 +61,20 @@ int key_press(int keycode, void *param)
     {
       printf("W\n");
       printf("Moving forward...\n");
-      if(map_data->map[(int)(map_data->posX + map_data->dirX * MOVESPEED)][(int)(map_data->posY)] == false) map_data->posX += map_data->dirX * MOVESPEED;
-      if(map_data->map[(int)(map_data->posX)][(int)(map_data->posY + map_data->dirY * MOVESPEED)] == false) map_data->posY += map_data->dirY * MOVESPEED;
+    //   if(map_data->map[(int)(map_data->posX + map_data->dirX * MOVESPEED)][(int)(map_data->posY)] == false) 
+	  map_data->posX += map_data->dirX * MOVESPEED;
+    //   if(m©ap_data->map[(int)(map_data->posX)][(int)(map_data->posY + map_data->dirY * MOVESPEED)] == false)
+	  map_data->posY += map_data->dirY * MOVESPEED;
       printf("After move: x=%d, y=%d\n", (int)map_data->posX, (int)map_data->posY);
     }
 	else if(keycode == KEY_S)
 	{
 	printf("S\n");
 	printf("Moving back...\n");
-	if(map_data->map[(int)(map_data->posX - map_data->dirX * MOVESPEED)][(int)(map_data->posY)] == false) map_data->posX -= map_data->dirX * MOVESPEED;
-	if(map_data->map[(int)(map_data->posX)][(int)(map_data->posY - map_data->dirY * MOVESPEED)] == false) map_data->posY -= map_data->dirY * MOVESPEED;
+	// if(map_data->map[(int)(map_data->posX - map_data->dirX * MOVESPEED)][(int)(map_data->posY)] == false) 
+	map_data->posX -= map_data->dirX * MOVESPEED;
+	// if(map_data->map[(int)(map_data->posX)][(int)(map_data->posY - map_data->dirY * MOVESPEED)] == false) 
+	map_data->posY -= map_data->dirY * MOVESPEED;
 	printf("After move: x=%d, y=%d\n", (int)map_data->posX, (int)map_data->posY);
 	}
 	if(keycode == KEY_D)

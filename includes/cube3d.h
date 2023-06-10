@@ -128,8 +128,8 @@ void			ft_free_all_tab(char **tab, int index);
 void			free_config(t_config *config);
 void			free_data(t_map *data);
 // Définition des constantes
-# define WINDOW_WIDTH 1000
-# define WINDOW_HEIGHT 1000
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 800
 # define texWidth 64
 # define texHeight 64
 
