@@ -132,6 +132,13 @@ void			free_data(t_map *data);
 # define WINDOW_HEIGHT 800
 # define texWidth 64
 # define texHeight 64
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_ESCAPE 65307
+# define ROTSPEED 0.05
+# define MOVESPEED 0.1
 
 // // Définition des structures de données
 // typedef struct s_player
