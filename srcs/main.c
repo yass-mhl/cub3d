@@ -6,11 +6,11 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:03:54 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/06/09 14:16:02 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/06/10 15:31:49 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cube3d.h"
 
 // static bool parsing(int ac, char **av, t_map *data, t_config *config)
 // {
@@ -98,93 +98,107 @@ static bool parsing(int ac, char **av, t_map *data, t_config **config)
 
 int main(int ac, char **av)
 {
-
-	////////////////////////
-	int **worldMap = malloc(24 * sizeof(int *));
-
-	for(int i = 0; i < mapHeight; i++) {
-		worldMap[i] = malloc(mapWidth * sizeof(int));
-	}
-
-	int tempWorldMap[mapWidth][mapHeight]=
-	{
-	{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
-	{4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-	{4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-	{4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-	{4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-	{4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
-	{4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
-	{4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-	{4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
-	{4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-	{4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
-	{4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
-	{6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-	{8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-	{6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-	{4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
-	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-	{4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
-	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-	{4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
-	{4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-	{4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
-	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-	{4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
-	};
-
-	for(int i = 0; i < mapHeight; i++) {
-		for(int j = 0; j < mapWidth; j++) {
-			worldMap[i][j] = tempWorldMap[i][j];
-		}
-	}
-	////////////////////////
-	double posX = 22, posY = 12;  //x and y start position
-	double dirX = -1, dirY = 0; //initial direction vector
-	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
-
-	// double time = 0; //time of current frame
-	// double oldTime = 0; //time of previous frame
-	int **map;
-	map = raycast(worldMap, posX, posY, dirX, dirY, planeX, planeY);
-	render(map, posX, posY, dirX, dirY, planeX, planeY, worldMap);
-	(void) ac;
-	(void) av;
-//   	void	*mlx;
-// 	void	*mlx_win;
-//   t_mlximg	mlx_img;
-	
-// 	mlx = mlx_init();
-// 	if(!mlx)
-// 		printf("Error mlx_init\n");
-// 	mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
-// 	if(!mlx_win)
-// 		printf("Error mlx_new_window\n");
-// 	mlx_img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-// 	if(!mlx_img.img)
-// 		printf("Error mlx_new_image\n");
-// 	mlx_img.addr = mlx_get_data_addr(mlx_img.img, &mlx_img.bits_per_pixel, &mlx_img.line_length,
-// 								&mlx_img.endian);	
-// 	printf("heeey\n");
-// 	mlx_put_image_to_window(mlx, mlx_win, mlx_img.img, 0, 0);
-// 	mlx_loop(mlx);
-	t_map data;
+	t_map *data;
 	t_config *config;
-	
+	data = malloc(sizeof(t_map));
+	if (!data)
+		return (printf(ERROR_MALLOC), 1);
 	config = malloc(sizeof(t_config));
 	if (!config)
-		return (0);
-	if (!parsing(ac, av, &data, &config))
-		return (0);
-	// int i = 0;
-	// while (data.map[i])
-	// {
-	// 	printf("%s\n",data.map[i]);
-	// 	i++;
-	// }
-	// render(NULL);
-	free_config(config);
-	free_data(&data);
+		return (printf(ERROR_MALLOC), 1);
+	if (!parsing(ac, av, data, &config))
+		return (1);
+	config->pixelMap = raycast(config);
+	render(config);
 	return (0);
 }
+
+
+// int main(int ac, char **av)
+// {
+// 	int **worldMap = malloc(24 * sizeof(int *));
+
+// 	for(int i = 0; i < mapHeight; i++) {
+// 		worldMap[i] = malloc(mapWidth * sizeof(int));
+// 	}
+
+// 	int tempWorldMap[mapWidth][mapHeight]=
+// 	{
+// 	{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+// 	{4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+// 	{4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+// 	{4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+// 	{4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+// 	{4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+// 	{4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+// 	{4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+// 	{4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+// 	{4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+// 	{4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+// 	{4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+// 	{6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+// 	{8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+// 	{6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+// 	{4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+// 	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+// 	{4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+// 	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+// 	{4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+// 	{4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+// 	{4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+// 	{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+// 	{4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+// 	};
+
+// 	for(int i = 0; i < mapHeight; i++) {
+// 		for(int j = 0; j < mapWidth; j++) {
+// 			worldMap[i][j] = tempWorldMap[i][j];
+// 		}
+// 	}
+// 	////////////////////////
+// 	double posX = 22, posY = 12;  //x and y start position
+// 	double dirX = -1, dirY = 0; //initial direction vector
+// 	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+
+// 	// double time = 0; //time of current frame
+// 	// double oldTime = 0; //time of previous frame
+
+// 	(void) ac;
+// 	(void) av;
+// //   	void	*mlx;
+// // 	void	*mlx_win;
+// //   t_mlximg	mlx_img;
+	
+// // 	mlx = mlx_init();
+// // 	if(!mlx)
+// // 		printf("Error mlx_init\n");
+// // 	mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
+// // 	if(!mlx_win)
+// // 		printf("Error mlx_new_window\n");
+// // 	mlx_img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+// // 	if(!mlx_img.img)
+// // 		printf("Error mlx_new_image\n");
+// // 	mlx_img.addr = mlx_get_data_addr(mlx_img.img, &mlx_img.bits_per_pixel, &mlx_img.line_length,
+// // 								&mlx_img.endian);	
+// // 	printf("heeey\n");
+// // 	mlx_put_image_to_window(mlx, mlx_win, mlx_img.img, 0, 0);
+// // 	mlx_loop(mlx);
+// 	t_map data;
+// 	t_config *config;
+	
+// 	config = malloc(sizeof(t_config));
+// 	if (!config)
+// 		return (0);
+// 	if (!parsing(ac, av, &data, &config))
+// 		return (0);
+// 	// int i = 0;
+// 	// while (data.map[i])
+// 	// {
+// 	// 	printf("%s\n",data.map[i]);
+// 	// 	i++;
+// 	// }
+// 	// render(NULL);
+// 	free_config(config);
+// 	free_data(&data);
+// 	return (0);
+// }

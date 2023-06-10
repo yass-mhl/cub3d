@@ -35,6 +35,15 @@ typedef struct s_map
 	char		**map;
 }				t_map;
 
+typedef struct s_mlximg
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_mlximg;
+
 typedef struct  s_config
 {
 	char		*no;
@@ -45,7 +54,15 @@ typedef struct  s_config
 	char		*c;
 	int			player_pos_x;
 	int			player_pos_y;
-	int			player_orientation;
+	char		player_orientation;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	int			**pixelMap;
+	void 		*mlx_win;
+	void		*mlx;
+	t_mlximg 	*mlx_img;
 	t_map		*map;
 }				t_config;
 
@@ -67,15 +84,6 @@ typedef struct s_slice
 	int			start;
 	int			end;
 }				t_slice;
-
-typedef struct s_mlximg
-{
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_mlximg;
 
 typedef struct s_map_data
 {
