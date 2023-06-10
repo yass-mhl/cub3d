@@ -136,10 +136,17 @@ void			ft_free_all_tab(char **tab, int index);
 void			free_config(t_config *config);
 void			free_data(t_map *data);
 // Définition des constantes
-# define WINDOW_WIDTH 1000
-# define WINDOW_HEIGHT 1000
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 800
 # define texWidth 64
 # define texHeight 64
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_ESCAPE 65307
+# define ROTSPEED 0.05
+# define MOVESPEED 0.1
 
 // // Définition des structures de données
 // typedef struct s_player
