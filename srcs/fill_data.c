@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:46:17 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/05/26 05:02:58 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/06/10 15:18:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,77 @@ int get_pos(char **map, char pos)
 	return (-1);
 }
 
+char get_orientation(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+				return (map[i][j]);
+			j++;
+		}
+	}
+	return (-1);
+}
+
+double get_dir(char orientation, char c)
+{
+	if (c == 'x')
+	{
+		if (orientation == 'N')
+			return (0);
+		else if (orientation == 'S')
+			return (0);
+		else if (orientation == 'E')
+			return (1);
+		else if (orientation == 'W')
+			return (-1);
+	}
+	else if (c == 'y')
+	{
+		if (orientation == 'N')
+			return (1);
+		else if (orientation == 'S')
+			return (-1);
+		else if (orientation == 'E')
+			return (0);
+		else if (orientation == 'W')
+			return (0);
+	}
+}
+
+double get_plane(char orientation, char c)
+{
+	if (c == 'x')
+	{
+		if (orientation == 'N')
+			return (0.66);
+		else if (orientation == 'S')
+			return (-0.66);
+		else if (orientation == 'E')
+			return (0);
+		else if (orientation == 'W')
+			return (0);
+	}
+	else if (c == 'y')
+	{
+		if (orientation == 'N')
+			return (0);
+		else if (orientation == 'S')
+			return (0);
+		else if (orientation == 'E')
+			return (0.66);
+		else if (orientation == 'W')
+			return (-0.66);
+	}
+}
+
 t_config	*set_config(t_map *data)
 {
 	t_config	*config;
@@ -93,7 +164,11 @@ t_config	*set_config(t_map *data)
 	config->c = get_identifier(data->file, "C ");
 	config->player_pos_x = get_pos(data->map, 'x');
 	config->player_pos_y = get_pos(data->map, 'y');
-	config->player_orientation = 0;
+	config->player_orientation = get_orientation(data->map);
+	config->dir_x = get_dir(config->player_orientation, 'x');
+	config->dir_y = get_dir(config->player_orientation, 'y');
+	config->plane_x = get_plane(config->player_orientation, 'x');
+	config->plane_y = get_plane(config->player_orientation, 'y');
 	return (config);
 	
 }
