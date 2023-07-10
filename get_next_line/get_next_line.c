@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 19:29:32 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/01/25 18:48:59 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/06/12 15:22:27 by gregoire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char	*get_next_line(int fd)
 	{
 		free(stash);
 		free(line);
+		stash = NULL;
 		return (NULL);
 	}
 	return (line);

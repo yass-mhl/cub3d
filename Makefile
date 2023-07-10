@@ -3,29 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gregoire <gregoire@student.42.fr>          +#+  +:+       +#+         #
+#    By: gansard <gansard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/05/26 05:02:11 by ymehlil          ###   ########.fr        #
+#    Updated: 2023/07/03 12:19:37 by gansard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRCS = main.c \
-	  parsing.c \
-      parsing_args.c \
-	  parsing_map.c \
-	  utils_parsing.c \
-	  fill_data.c \
-      raycasting.c \
-      utils.c \
-      player_movement.c \
+	  parsing/utils_parsing.c \
+	  parsing/fill_data.c\
+	  parsing/parsing.c\
+	  parsing/parsing_args.c\
+	  parsing/parsing_map.c\
+	  parsing/parsing_utils_2.c\
+	  parsing/utils_parsing_info.c\
+	  raycasting/raycast_init.c \
+      raycasting/raycast_update.c \
+      raycasting/raycast_set.c \
+      raycasting/raycast.c \
+      player/keys.c\
+	  player/move.c\
+	  player/rotate.c\
       rendering.c \
       exit.c \
 	  free.c \
 	  check.c \
-	  utils_parsing_info.c
+	  textures.c 
 
 SRCSD	= srcs/
 
@@ -42,7 +48,7 @@ MINILIBX_A = minilibx-linux/libmlx.a
 
 CC = cc
 RM	= rm -rf
-FLAGS = -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -Iincludes -g3
+FLAGS = -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -Iincludes -g3 -O0
 LIB = -L/usr/include -lreadline -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 
 # Couleurs
