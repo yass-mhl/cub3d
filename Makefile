@@ -6,7 +6,7 @@
 #    By: gansard <gansard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/07/03 12:19:37 by gansard          ###   ########.fr        #
+#    Updated: 2023/07/11 13:59:56 by gansard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,18 @@ SRCS = main.c \
 	  parsing/parsing_map.c\
 	  parsing/parsing_utils_2.c\
 	  parsing/utils_parsing_info.c\
-	  raycasting/raycast_init.c \
-      raycasting/raycast_update.c \
-      raycasting/raycast_set.c \
-      raycasting/raycast.c \
       player/keys.c\
 	  player/move.c\
 	  player/rotate.c\
       rendering.c \
       exit.c \
 	  free.c \
-	  check.c \
-	  textures.c 
+	  textures.c \
+     raycasting/raycast_init.c \
+     raycasting/raycast_update.c \
+     raycasting/raycast_set.c \
+     raycasting/raycast.c \
+	#raycasting/raycasting.c \
 
 SRCSD	= srcs/
 

@@ -6,7 +6,7 @@
 /*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:26:38 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/03 11:40:48 by gansard          ###   ########.fr       */
+/*   Updated: 2023/07/11 13:59:27 by gansard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_rc	update_rc(t_rc rc, t_config *config)
 		rc.perp_wall_dist = rc.side_dist_x - rc.delta_dist_x;
 	else
 		rc.perp_wall_dist = rc.side_dist_y - rc.delta_dist_y;
+	if (rc.perp_wall_dist < 0.0001) 
+    	rc.perp_wall_dist = 0.0001;
 	rc.line_height = (int)(WINDOW_HEIGHT / rc.perp_wall_dist);
 	rc.draw_start = -rc.line_height / 2 + WINDOW_HEIGHT / 2;
 	if (rc.draw_start < 0)

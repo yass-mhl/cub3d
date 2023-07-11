@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:43:46 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/10 18:01:27 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/11 14:01:49 by gansard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define KEYRIGHT 65363
 # define KEY_ESCAPE 65307
 # define ROTSPEED 0.05
-# define MOVESPEED 0.1
+# define MOVESPEED 0.2
 
 // Définition des messages d'erreur
 # define ERROR_ARGS "Error\n: wrong number of arguments\n"
