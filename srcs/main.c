@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:03:54 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/10 18:08:51 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/11 17:13:09 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ static int	initialize(t_config **config, t_map **data, int ac, char **av)
 	(*config)->map = *data;
 	return (0);
 }
-t_config *get_config(void)
+t_config	*get_config(void)
 {
 	static t_config	*config = NULL;
+
 	if (!config)
 	{
 		config = malloc(sizeof(t_config));

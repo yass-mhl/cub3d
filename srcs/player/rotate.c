@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:55:57 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/03 17:09:07 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/11 15:58:22 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	update_direction_left(t_config *config, double olddirx,
 static void	update_direction_right(t_config *config, double olddirx,
 		double oldplane_x)
 {
-	printf("x = %f\n", config->p_pos_x);
-	printf("y = %f\n", config->p_pos_y);
 	config->dirx = config->dirx * cos(ROTSPEED) - config->diry * sin(ROTSPEED);
 	config->diry = olddirx * sin(ROTSPEED) + config->diry * cos(ROTSPEED);
 	config->plane_x = config->plane_x * cos(ROTSPEED) - config->plane_y

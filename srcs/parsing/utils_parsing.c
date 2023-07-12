@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:23:39 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/02 18:44:30 by gansard          ###   ########.fr       */
+/*   Updated: 2023/07/11 17:12:15 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	is_space(char c)
 
 int	is_valid(char c)
 {
+	if (!c)
+		return (0);
 	if (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	return (0);
@@ -31,17 +33,15 @@ int	is_valid(char c)
 
 int	check_cross(char **map, int i, int j)
 {
-	if (i == 0)
+	if (i == 0 || j == 0)
 		return (0);
-	if (j == 0)
-		return (0);
-	if (!map[i + 1])
+	if (map[i +  1] && map[i + 1][0] == '\n')
 		return (0);
 	if (!map[i][j + 1])
 		return (0);
 	if (!map[i - 1][j])
 		return (0);
-	if (!map[i + 1][j])
+	if (map[i + 1] && !map[i + 1][j])
 		return (0);
 	if (!is_valid(map[i][j + 1]) || !is_valid(map[i][j - 1]) || !is_valid(map[i
 			+ 1][j]) || !is_valid(map[i - 1][j]))
@@ -61,17 +61,23 @@ int	count_lines(const char *filename)
 	if (fd == -1)
 		return (-1);
 	bytes_read = read(fd, &c, 1);
+	if (bytes_read > 0)
+		line_count = 1;
 	while (bytes_read > 0)
 	{
 		if (c == '\n')
 		{
-			line_count++;
+			bytes_read = read(fd, &c, 1);
+			if (bytes_read > 0)
+				line_count++;
 		}
-		bytes_read = read(fd, &c, 1);
+		else
+			bytes_read = read(fd, &c, 1);
 	}
 	close(fd);
 	return (line_count);
 }
+
 
 void	ft_fill_check(t_check *check)
 {

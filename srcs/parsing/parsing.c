@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:34:06 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/03 12:16:40 by gansard          ###   ########.fr       */
+/*   Updated: 2023/07/11 18:30:32 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,18 @@ int	count_start_line(char **file)
 {
 	int	i;
 	int	start_line;
+	int j;
 
 	i = 0;
 	start_line = 0;
 	while (file[i])
-	{
-		if (!ft_strncmp(file[i], "NO", 2) || !ft_strncmp(file[i], "SO", 2)
-			|| !ft_strncmp(file[i], "WE", 2) || !ft_strncmp(file[i], "EA", 2)
-			|| !ft_strncmp(file[i], "F ", 2) || !ft_strncmp(file[i], "C ", 2)
+	{	
+		j = 0;
+		while (file[i][j] && file[i][j] == ' ')
+			j++;
+		if (!ft_strncmp(&file[i][j], "NO", 2) || !ft_strncmp(&file[i][j], "SO", 2)
+			|| !ft_strncmp(&file[i][j], "WE", 2) || !ft_strncmp(&file[i][j], "EA", 2)
+			|| !ft_strncmp(&file[i][j], "F ", 2) || !ft_strncmp(&file[i][j], "C ", 2)
 			|| file[i][0] == '\n')
 			start_line++;
 		i++;
@@ -77,7 +81,7 @@ char	**get_map(char **file)
 		return (NULL);
 	j = 0;
 	while (file[start_line] && start_line <= i)
-	{
+	{	
 		tmp = ft_strdup(file[start_line]);
 		map[j] = ft_strtrim(tmp, "\n");
 		start_line++;

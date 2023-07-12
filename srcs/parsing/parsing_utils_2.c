@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 12:15:58 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/10 16:51:10 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/11 18:44:24 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strtokstr(char *str, char *sep)
 	char	*res;
 
 	i = 0;
+	if (!str)
+		printf("Avant le seg\n");
 	index_sep = ft_strstr(str, sep);
 	if (index_sep == -1)
 		return (NULL);

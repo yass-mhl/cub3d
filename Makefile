@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gansard <gansard@student.42.fr>            +#+  +:+       +#+         #
+#    By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:35:00 by gregoire          #+#    #+#              #
-#    Updated: 2023/07/11 13:59:56 by gansard          ###   ########.fr        #
+#    Updated: 2023/07/11 15:04:33 by ymehlil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ MINILIBX_A = minilibx-linux/libmlx.a
 
 CC = cc
 RM	= rm -rf
-FLAGS = -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -Iincludes -g3 -O0
+FLAGS = -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -Iincludes -O0
 LIB = -L/usr/include -lreadline -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 
 # Couleurs
