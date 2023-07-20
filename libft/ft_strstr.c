@@ -6,16 +6,16 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:37:23 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/11 18:41:44 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/12 17:10:22 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strstr(char *str, char *sep)
+int	ft_strstr(char *str, char *sep)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (str[i])

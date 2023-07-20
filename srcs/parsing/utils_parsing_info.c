@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing_info.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:44:40 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/02 18:44:35 by gansard          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:37:00 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,6 @@ int	is_less_255(char *str)
 	return (true);
 }
 
-// Peut etre mettre un ft_strtrim mais je suis pas sur, a voir
-
-int	check_f_c(t_config *config)
-{
-	char	**f;
-	char	**c;
-	int		i;
-
-	i = 0;
-	f = ft_split(config->f, ',');
-	c = ft_split(config->c, ',');
-	if (ft_tablen(f) != 3 || ft_tablen(c) != 3)
-		return (ft_free_all_tab(c), ft_free_all_tab(f), false);
-	while (f[i] != NULL)
-	{
-		if (!is_less_255(f[i]))
-			return (ft_free_all_tab(c), ft_free_all_tab(f), false);
-		i++;
-	}
-	i = 0;
-	while (c[i])
-	{
-		if (!is_less_255(c[i]))
-			return (ft_free_all_tab(f), ft_free_all_tab(c), false);
-		i++;
-	}
-	return (ft_free_all_tab(c), ft_free_all_tab(f), true);
-}
-
 int	check_commas(char *str)
 {
 	int	i;
@@ -83,4 +54,40 @@ int	check_commas(char *str)
 	if (commas != 2)
 		return (0);
 	return (1);
+}
+
+int	check_elements(char **elements)
+{
+	int		i;
+	char	*trimmed;
+
+	i = 0;
+	while (elements[i])
+	{
+		trimmed = ft_strtrim(elements[i], " ");
+		if (!is_less_255(trimmed))
+		{
+			free(trimmed);
+			return (false);
+		}
+		free(trimmed);
+		i++;
+	}
+	return (true);
+}
+
+int	check_f_c(t_config *config)
+{
+	char	**f;
+	char	**c;
+
+	f = ft_split(config->f, ',');
+	c = ft_split(config->c, ',');
+	if (ft_tablen(f) != 3 || ft_tablen(c) != 3)
+	{
+		return (ft_free_all_tab(c), ft_free_all_tab(f), false);
+	}
+	if (!check_elements(f) || !check_elements(c))
+		return (ft_free_all_tab(c), ft_free_all_tab(f), false);
+	return (ft_free_all_tab(c), ft_free_all_tab(f), true);
 }

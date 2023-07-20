@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:54:10 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/03 17:10:52 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	key_press(int keycode, void *param)
 
 	config = (t_config *)param;
 	process_key(keycode, config);
-	config->pixelMap = raycast(config);
-	draw_scene(config->pixelMap, config->mlx, config->mlx_win, config->mlx_img);
+	config->pixelmap = raycast(config);
+	draw_scene(config->pixelmap, config->mlx, config->mlx_win, config->mlx_img);
 	return (0);
 }

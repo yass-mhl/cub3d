@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:43:46 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/11 16:04:12 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:30:08 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdint.h>
@@ -43,8 +44,8 @@
 # define KEYLEFT 65361
 # define KEYRIGHT 65363
 # define KEY_ESCAPE 65307
-# define ROTSPEED 0.05
-# define MOVESPEED 0.2
+# define ROTSPEED 0.1
+# define MOVESPEED 0.15
 
 // Définition des messages d'erreur
 # define ERROR_ARGS "Error\n: wrong number of arguments\n"
@@ -92,7 +93,7 @@ typedef struct s_config
 	double		diry;
 	double		plane_x;
 	double		plane_y;
-	int			**pixelMap;
+	int			**pixelmap;
 	int			**textures;
 	void		*mlx_win;
 	void		*mlx;
@@ -181,6 +182,7 @@ int				check_path(char *path);
 char			*get_identifier(char **file, char *identifier);
 char			*ft_strtokstr(char *str, char *sep);
 int				rgb_to_hex(char *rgb);
+int				check_char_rgb(char *rgb);
 t_config		*get_config(void);
 
 #endif // CUB3D_H

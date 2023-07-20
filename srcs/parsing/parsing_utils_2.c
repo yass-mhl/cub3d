@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 12:15:58 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/11 18:44:24 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/20 15:35:47 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strtokstr(char *str, char *sep)
 
 	i = 0;
 	if (!str)
-		printf("Avant le seg\n");
+		return (NULL);
 	index_sep = ft_strstr(str, sep);
 	if (index_sep == -1)
 		return (NULL);
@@ -62,35 +62,42 @@ int	check_path(char *path)
 	return (1);
 }
 
-
-int	split_rgb(char *rgb, int *r, int *g, int *b)
+int check_char_rgb(char *str)
 {
-	char	**rgb_split;
-	int		i;
+	int	i;
+	int	len;
 
 	i = 0;
-	rgb_split = ft_split(rgb, ',');
-	if (!rgb_split)
+	len = 0;
+	if (!str)
 		return (0);
-	while (rgb_split[i])
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			len++;
 		i++;
-	*r = ft_atoi(rgb_split[0]);
-	*g = ft_atoi(rgb_split[1]);
-	*b = ft_atoi(rgb_split[2]);
-	return (ft_free_all_tab(rgb_split), 1);
+	}
+	if (len > 3)
+		return (0);
+	return (1);
 }
 
 int	rgb_to_hex(char *rgb)
 {
-	int	r;
-	int	g;
-	int	b;
-	int	hex_value;
+	int		r;
+	int		g;
+	int		b;
+	int		hex_value;
 	char	**tab;
 
 	tab = ft_split(rgb, ',');
 	if (!tab)
 		return (-1);
+	if (!tab[0] || !tab[1] || !tab[2])
+		return (ft_free_all_tab(tab), -1);
+	if (!check_char_rgb(tab[0]) || !check_char_rgb(tab[1])
+			|| !check_char_rgb(tab[2]))
+		return (ft_free_all_tab(tab), -1);
 	r = ft_atoi(tab[0]);
 	g = ft_atoi(tab[1]);
 	b = ft_atoi(tab[2]);

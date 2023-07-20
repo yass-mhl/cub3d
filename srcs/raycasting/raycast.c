@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:27:02 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/03 19:58:05 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,15 @@ int	**raycast(t_config *config)
 {
 	int	**buffer;
 
-	if (config->pixelMap)
-		ft_free_all_tab_int(config->pixelMap);
+	if (config->pixelmap)
+		ft_free_all_tab_int(config->pixelmap);
 	buffer = allocate_buffer();
 	if (!buffer)
 	{
 		printf("Failed to allocate memory for screen buffer\n");
 		return (NULL);
 	}
-	config->pixelMap = buffer;
+	config->pixelmap = buffer;
 	raycasting(config);
 	return (buffer);
 }

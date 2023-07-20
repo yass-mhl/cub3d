@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:34:06 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/11 18:30:32 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/20 15:36:42 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,19 @@ int	count_start_line(char **file)
 {
 	int	i;
 	int	start_line;
-	int j;
+	int	j;
 
 	i = 0;
 	start_line = 0;
 	while (file[i])
-	{	
+	{
 		j = 0;
 		while (file[i][j] && file[i][j] == ' ')
 			j++;
-		if (!ft_strncmp(&file[i][j], "NO", 2) || !ft_strncmp(&file[i][j], "SO", 2)
-			|| !ft_strncmp(&file[i][j], "WE", 2) || !ft_strncmp(&file[i][j], "EA", 2)
-			|| !ft_strncmp(&file[i][j], "F ", 2) || !ft_strncmp(&file[i][j], "C ", 2)
+		if (!ft_strncmp(&file[i][j], "NO", 2) || !ft_strncmp(&file[i][j], "SO",
+				2) || !ft_strncmp(&file[i][j], "WE", 2)
+			|| !ft_strncmp(&file[i][j], "EA", 2) || !ft_strncmp(&file[i][j],
+				"F ", 2) || !ft_strncmp(&file[i][j], "C ", 2)
 			|| file[i][0] == '\n')
 			start_line++;
 		i++;
@@ -81,7 +82,7 @@ char	**get_map(char **file)
 		return (NULL);
 	j = 0;
 	while (file[start_line] && start_line <= i)
-	{	
+	{
 		tmp = ft_strdup(file[start_line]);
 		map[j] = ft_strtrim(tmp, "\n");
 		start_line++;
@@ -118,6 +119,8 @@ bool	check_config(t_config *config)
 		return (false);
 	if (!check_f_c(config) || !check_commas(config->f)
 		|| !check_commas(config->c))
+		return (false);
+	if (config->hexa_f == -1 || config->hexa_c == -1)
 		return (false);
 	if (!check_path(config->no) || !check_path(config->so)
 		|| !check_path(config->we) || !check_path(config->ea))

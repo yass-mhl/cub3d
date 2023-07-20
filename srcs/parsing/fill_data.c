@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:46:17 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/10 18:12:11 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,5 @@ void	set_config(t_map *data, t_config *config)
 	config->w = TEXWIDTH;
 	config->textures = NULL;
 	config->mlx = NULL;
-	config->pixelMap = NULL;
+	config->pixelmap = NULL;
 }

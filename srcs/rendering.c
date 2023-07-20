@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:35:16 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/10 18:10:41 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	render(t_config *config)
 	if (!config->mlx_win)
 		printf("Error mlx_new_window\n");
 	ft_memset(&mlx_img, 0, sizeof(t_mlximg));
-	draw_scene(config->pixelMap, config->mlx, config->mlx_win, &mlx_img);
+	draw_scene(config->pixelmap, config->mlx, config->mlx_win, &mlx_img);
 	config->mlx_img = &mlx_img;
 	mlx_hook(config->mlx_win, KeyPress, KeyPressMask, key_press, config);
 	mlx_hook(config->mlx_win, 17, 0, &ft_exit, config);

@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:46:27 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/03 19:59:20 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/20 13:27:54 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	free_config(t_config *config)
 		free(config->mlx);
 	if (config->textures)
 		free_textures(config->textures);
-	if (config->pixelMap)
-		ft_free_all_tab_int(config->pixelMap);
+	if (config->pixelmap)
+		ft_free_all_tab_int(config->pixelmap);
 	free(config);
 }
 

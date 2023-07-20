@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:15:02 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/10 17:06:16 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/20 12:59:42 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	**create_textures(void)
 {
 	int	**texture;
 
-	texture = malloc(4 * sizeof(int *));
+	texture = ft_calloc(4, sizeof * texture);
 	return (texture);
 }
 
@@ -69,7 +69,10 @@ void	populate_textures(t_config *config, int **texture)
 {
 	config->mlx = mlx_init();
 	if (config->mlx == NULL)
-		return ;
+	{
+		printf("Error\ncub3d: mlx_init\n");
+		ft_exit(config);
+	}
 	texture[0] = xpm_to_img(config, config->no);
 	texture[1] = xpm_to_img(config, config->so);
 	texture[2] = xpm_to_img(config, config->ea);

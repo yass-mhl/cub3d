@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:03:54 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/11 17:13:09 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	init_data(t_config **config, t_map **data)
 	(*config)->c = NULL;
 	(*config)->f = NULL;
 	(*config)->mlx = NULL;
-	(*config)->pixelMap = NULL;
+	(*config)->pixelmap = NULL;
 	(*config)->textures = NULL;
 	(*data)->file = NULL;
 	(*data)->map = NULL;
@@ -67,6 +67,7 @@ static int	initialize(t_config **config, t_map **data, int ac, char **av)
 	(*config)->map = *data;
 	return (0);
 }
+
 t_config	*get_config(void)
 {
 	static t_config	*config = NULL;
@@ -92,7 +93,7 @@ int	main(int ac, char **av)
 	if (!config->textures)
 		return (printf("Failed to create textures\n"), 1);
 	populate_textures(config, config->textures);
-	config->pixelMap = raycast(config);
+	config->pixelmap = raycast(config);
 	render(config);
 	return (0);
 }

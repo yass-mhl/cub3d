@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_set.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gansard <gansard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:26:49 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/03 11:40:51 by gansard          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:12:29 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	process_rc(t_rc *rc, t_config *config)
 {
 	set_tex_num(rc);
 	set_wall_x(rc, config);
-	rc->buffer = config->pixelMap;
+	rc->buffer = config->pixelmap;
 	rc->x = rc->iter_x;
 	rc->texture = config->textures;
 	draw_pixels(*rc);

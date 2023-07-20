@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:23:39 by ymehlil           #+#    #+#             */
-/*   Updated: 2023/07/11 17:12:15 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/12 17:38:51 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int	check_cross(char **map, int i, int j)
 {
 	if (i == 0 || j == 0)
 		return (0);
-	if (map[i +  1] && map[i + 1][0] == '\n')
+	if (map[i + 1] && map[i + 1][0] == '\n')
 		return (0);
 	if (!map[i][j + 1])
 		return (0);
 	if (!map[i - 1][j])
 		return (0);
 	if (map[i + 1] && !map[i + 1][j])
+		return (0);
+	if (!map[i + 1])
 		return (0);
 	if (!is_valid(map[i][j + 1]) || !is_valid(map[i][j - 1]) || !is_valid(map[i
 			+ 1][j]) || !is_valid(map[i - 1][j]))
@@ -77,7 +79,6 @@ int	count_lines(const char *filename)
 	close(fd);
 	return (line_count);
 }
-
 
 void	ft_fill_check(t_check *check)
 {
