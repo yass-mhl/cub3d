@@ -6,7 +6,7 @@
 /*   By: ymehlil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 12:15:58 by gansard           #+#    #+#             */
-/*   Updated: 2023/07/20 15:35:47 by ymehlil          ###   ########.fr       */
+/*   Updated: 2023/07/31 12:31:52 by ymehlil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_path(char *path)
 	return (1);
 }
 
-int check_char_rgb(char *str)
+int	check_char_rgb(char *str)
 {
 	int	i;
 	int	len;
@@ -96,7 +96,7 @@ int	rgb_to_hex(char *rgb)
 	if (!tab[0] || !tab[1] || !tab[2])
 		return (ft_free_all_tab(tab), -1);
 	if (!check_char_rgb(tab[0]) || !check_char_rgb(tab[1])
-			|| !check_char_rgb(tab[2]))
+		|| !check_char_rgb(tab[2]))
 		return (ft_free_all_tab(tab), -1);
 	r = ft_atoi(tab[0]);
 	g = ft_atoi(tab[1]);
