@@ -8,7 +8,7 @@ Cub3d is a 42-school team project to create a dynamic 3d view, like Wolfenstein 
 Clone this project
 
 ```bash
-    git clone https://github.com/yass-mhl/cub3d.git
+git clone https://github.com/yass-mhl/cub3d.git
 ```
 
 ## How to run it
